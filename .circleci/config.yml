@@ -16,7 +16,7 @@ jobs:
             apk update
             apk add openssl
             tar -zc config > config.tgz
-            openssl aes-256-cbc -e -in config.tgz -out config.tgz.enc -S $SRCKEY
+            openssl aes-256-cbc -e -in config.tgz -out config.tgz.enc -S -k $SRCKEY
 
       - restore_cache:
           keys:
