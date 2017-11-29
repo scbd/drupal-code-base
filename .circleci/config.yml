@@ -1,0 +1,82 @@
+version: 2
+jobs:
+  build:
+    working_directory: /app
+    docker:
+      - image: docker:17.09.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run:
+          name: encrypt
+          command: |
+            tar -zc app/config | openssl enc -aes-256-cbc -out config.tgz.enc -salt -k $SRCKEY
+            
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          paths:
+            - /caches/app.tar
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /caches/app.tar | true
+
+      - run:
+          name: Build application Docker image
+          command: |
+            docker build --cache-from=app -t app .
+
+      - run:
+          name: Save Docker image layer cache
+          command: |
+            mkdir -p /caches
+            docker save -o /caches/app.tar app
+      - save_cache:
+          key: v1-{{ .Branch }}-{{ epoch }}
+          paths:
+            - /caches/app.tar
+
+      - deploy:
+          name: Push application Docker image
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "dev" ]; then
+              docker login -u $DOCKER_USER -p $DOCKER_PASS
+              docker tag app scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
+              docker push scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
+            fi
+     # build the application image
+      # - run:
+      #     name: Build Docker Image scbd/drupal-code-base:{$CIRCLE_BRANCH}
+      #     command: docker build -t scbd/drupal-code-base:$CIRCLE_BRANCH .
+
+#
+#   deploy-job:
+#     machine: true
+#
+#     steps:
+#       - checkout
+#
+#      # build the application image
+#       - run:
+#           name: Push Docker Image scbd/drupal-code-base:$CIRCLE_BRANCH to Dockerhub
+#           command: |
+#             docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+#             docker tag output scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
+#             docker push scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
+#
+# workflows:
+#   version: 2
+#   build-deploy:
+#     jobs:
+#       - build-job
+#       - deploy-job:
+#           requires:
+#             - build-job
+#           # filters:
+#           #   branches:
+#           #     only:
+#           #       - stg
+#           #       - dev
