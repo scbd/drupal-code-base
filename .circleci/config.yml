@@ -11,6 +11,9 @@ jobs:
       - run:
           name: encrypt
           command: |
+            rm -rf /var/cache/apk/*
+            rm -rf /tmp/
+            apk update
             apk add openssl
             tar -zc app/config | openssl enc -aes-256-cbc -out config.tgz.enc -salt -k $SRCKEY
 
