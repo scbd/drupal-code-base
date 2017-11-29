@@ -11,7 +11,7 @@ jobs:
       - run:
           name: encrypt
           command: |
-            sudo apt install -y openssl
+            apk add openssl
             tar -zc app/config | openssl enc -aes-256-cbc -out config.tgz.enc -salt -k $SRCKEY
 
       - restore_cache:
