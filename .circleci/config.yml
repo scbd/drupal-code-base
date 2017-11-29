@@ -15,7 +15,7 @@ jobs:
             rm -rf /tmp/
             apk update
             apk add openssl
-            tar -zc app/config | openssl enc -aes-256-cbc -out config.tgz.enc -salt -k $SRCKEY
+            tar -zc config | openssl enc -aes-256-cbc -out config.tgz.enc -salt -k $SRCKEY
 
       - restore_cache:
           keys:
