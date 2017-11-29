@@ -12,13 +12,16 @@ jobs:
           name: encrypt
           command: |
             rm -rf /var/cache/apk/*
-            rm -rf /tmp/
             apk update
             apk add openssl
             tar -zc config > config.tgz
             openssl aes-256-cbc -e -in config.tgz -out config.tgz.enc -S ${SRCKEY:0:10} -k $SRCKEY
 
-
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          paths:
+            - /caches/app.tar
       - run:
           name: Load Docker image layer cache
           command: |
