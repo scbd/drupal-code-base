@@ -32,7 +32,7 @@ jobs:
           name: Build application Docker image
           command: |
             ls -al
-            docker build --cache-from=app -t app .
+            docker build --cache-from=app -f Dockerfile-encrypted -t app .
 
       - run:
           name: Save Docker image layer cache
