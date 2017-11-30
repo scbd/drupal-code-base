@@ -4,6 +4,6 @@ composer update
 # echo "change path to web"
 # cd web
 echo "Drush config import"
-drush -r "/var/www/html/web" cim
+drush -r -y "/var/www/html/web" cim
 echo "Drush cache clear and rebuild"
-drush -r "/var/www/html/web" cr
+drush -r -y "/var/www/html/web" cr
