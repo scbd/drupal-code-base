@@ -57,10 +57,10 @@ jobs:
               docker tag app scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
               docker push scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
             fi
-     
+
       - run:
-          name: Build Docker Image scbd/drupal-code-base:{$CIRCLE_BRANCH}
-          command: docker build -t scbd/drupal-code-base:$CIRCLE_BRANCH .
+          name: Build Encrypted Docker Image scbd/drupal-code-base:{$CIRCLE_BRANCH}
+          command: docker build -t scbd/drupal-code-base:$CIRCLE_BRANCH Dockerfile-encrypted
 
 #
 #   deploy-job:
