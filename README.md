@@ -1,3 +1,12 @@
+
+
+Branches:
+dev: [![CircleCI](https://circleci.com/gh/scbd/drupal-code-base/tree/dev.svg?style=shield&circle-token=a58506c78edadf94d5268ee9eb5975f720d48580)](https://circleci.com/gh/scbd/drupal-code-base/tree/dev)
+
+stg: [![CircleCI](https://circleci.com/gh/scbd/drupal-code-base/tree/stg.svg?style=shield&circle-token=a58506c78edadf94d5268ee9eb5975f720d48580)](https://circleci.com/gh/scbd/drupal-code-base/tree/stg)
+
+prod: [![CircleCI](https://circleci.com/gh/scbd/drupal-code-base/tree/latest.svg?style=shield&circle-token=a58506c78edadf94d5268ee9eb5975f720d48580)](https://circleci.com/gh/scbd/drupal-code-base/tree/latest)
+
 TODO:
 
 - set up dev to run from git
