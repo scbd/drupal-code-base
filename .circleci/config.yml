@@ -60,7 +60,7 @@ jobs:
 
       - run:
           name: Build Encrypted Docker Image scbd/drupal-code-base:{$CIRCLE_BRANCH}
-          command: docker build -t scbd/drupal-code-base:$CIRCLE_BRANCH Dockerfile-encrypted
+          command: docker build -t scbd/drupal-code-base:$CIRCLE_BRANCH -f Dockerfile-encrypted .
 
 #
 #   deploy-job:
