@@ -24,6 +24,7 @@
         "drupal/core": "8.4.2",
         "drupal/s3fs": "^3.0@alpha",
         "drush/drush": "8.1.15",
+        "roave/security-advisories": "dev-master",
         "webflo/drupal-finder": "1.1.0",
         "webmozart/path-util": "2.3"
     },
