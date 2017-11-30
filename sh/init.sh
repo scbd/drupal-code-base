@@ -9,9 +9,8 @@ fi
 if [ -f "config.tgz.enc" ]
 then
     echo "Decrypt config"
-    set -e
-    openssl enc -d -aes-256-cbc -in config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
-
+    openssl enc -d -aes-256-cbc -in ../config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
+    mv config ../config
 fi
 
 echo "Wait for db"
