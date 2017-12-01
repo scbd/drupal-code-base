@@ -1,7 +1,14 @@
 #!/bin/bash
 php security-checker.phar security:check ../composer.lock
-echo "Composer update"
-composer update -d=$APP_ROOT
+echo "Composer update "
+
+FILE=/run/secrets/settings.php
+if [ -f $FILE ]; then
+   composer update -d=$APP_ROOT --no-dev
+else
+   composer update -d=$APP_ROOT
+fi
+
 # echo "change path to web"
 # cd web
 echo "Drush config import"

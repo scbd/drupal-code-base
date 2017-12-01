@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd /var/www/html/sh
 set -e
 
 if [[ -n "${DEBUG}" ]]; then

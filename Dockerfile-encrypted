@@ -10,8 +10,8 @@ COPY . ./
 RUN set -ex && \
     # mv /usr/local/bin/actions.mk /usr/local/bin/drupal-php.mk && \
     chown -R www-data:www-data /var/www/html && \
-    su-exec www-data composer install  && \
-    su-exec www-data composer update  && \
+    su-exec www-data composer install --no-dev  && \
+    su-exec www-data composer update  --no-dev && \
     su-exec www-data composer clear-cache  && \
     su-exec www-data mkdir /var/www/files && \
     su-exec www-data mkdir /var/www/files/config && \
