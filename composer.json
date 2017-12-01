@@ -61,7 +61,7 @@
         "post-install-cmd": [
           "@drupal-scaffold"
         ],
-        "post-update-cmd": [
+        "post-archive-cmd": [
           "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::init"
         ]

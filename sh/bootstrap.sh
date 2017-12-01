@@ -1,13 +1,8 @@
 #!/bin/bash
 php security-checker.phar security:check ../composer.lock
-echo "Composer update "
+echo "Composer init"
 
-FILE=/run/secrets/settings.php
-if [ -f $FILE ]; then
-   composer update -d=$APP_ROOT --no-dev
-else
-   composer update -d=$APP_ROOT
-fi
+composer status -d=$APP_ROOT
 
 # echo "change path to web"
 # cd web
