@@ -21,4 +21,5 @@ else
 	./wait-for-it.sh DRUPAL_mariadb:3306 --timeout=0 --strict -- sh ./bootstrap.sh
 fi
 
+
 exec "$@"
