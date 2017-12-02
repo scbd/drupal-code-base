@@ -1,5 +1,5 @@
 #!/bin/bash
-php security-checker.phar security:check $APP_ROOT/composer.lock
+php $APP_ROOT/sh/actions/security-checker.phar security:check $APP_ROOT/composer.lock
 echo "Composer init"
 
 composer status -d=$APP_ROOT
