@@ -7,7 +7,7 @@ fi
 
 if [ -f "config.tgz.enc" ]
 then
-    echo "Decrypt config $APP_ROOT"
+    echo "Decrypt config -- $APP_ROOT"
     openssl enc -d -aes-256-cbc -in config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
     ls -al
 fi
