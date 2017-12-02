@@ -10,7 +10,6 @@ then
     echo "Decrypt config $APP_ROOT"
     openssl enc -d -aes-256-cbc -in config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
     ls -al
-    mv config $APP_ROOT/config
 fi
 
 echo "Wait for db"
