@@ -1,4 +1,4 @@
 [submodule "config"]
 	path = config
-	url = https://randyhoulahan@github.com/scbd/drupal-config.git
+	url = https://github.com/scbd/drupal-config.git
   branch = dev
