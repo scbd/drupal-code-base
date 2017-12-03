@@ -15,10 +15,7 @@ jobs:
           name: submodule
           command: |
             git submodule sync
-            git submodule update --init || :
-              |
-            git submodule sync
-            git submodule update --init
+            git submodule update --init 
       - run:
           name: encrypt
           command: |
