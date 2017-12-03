@@ -1,5 +1,7 @@
 FROM wodby/drupal-php:7.1-3.0.0
 
+MAINTAINER it@cbd.int
+
 ENV DOCROOT_SUBDIR="web" \
     APP_NAME="Drupal 8"
 
