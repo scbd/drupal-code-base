@@ -5,6 +5,9 @@ jobs:
     docker:
       - image: docker:17.09.0-ce-git
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "4c:f3:df:b8:c0:91:7f:b1:71:d3:14:c4:04:d4:15:19"
       - checkout
       - setup_remote_docker
 
