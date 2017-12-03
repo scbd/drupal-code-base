@@ -5,13 +5,19 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-if [ -f "config.tgz.enc" ]
+if [ -f "config.tgz.enc" && -f "/run/secrets/settings.php"]
 then
     echo "Decrypt config -- "$APP_ROOT
     openssl enc -d -aes-256-cbc -in config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
-    # rm config.tgz.enc
-    # rm config.tgz
-    ls -al config
+    rm config.tgz.enc
+    tar -xvzf config.tgz
+    rm config.tgz
+    mv config/config /var/www/files/config/sync_dir
+    rm -f config
+fi
+else
+    echo "Running locally no need to dycrypt config"$APP_ROOT
+    rm config.tgz.enc
 fi
 
 echo "Wait for db"
