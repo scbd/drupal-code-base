@@ -5,7 +5,10 @@ jobs:
     docker:
       - image: docker:17.09.0-ce-git
     steps:
-      - checkout
+      checkout:
+        post:
+          - git submodule sync
+          - git submodule update --init --recursive || (rm -fr .git/config .git/modules && git submodule deinit -f . && git submodule update --init --recursive)
       - setup_remote_docker
 
       - run:
