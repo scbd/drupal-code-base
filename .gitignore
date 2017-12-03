@@ -10,8 +10,7 @@
 # Ignore sensitive information
 /web/sites/*/settings.php
 
-!/tmp/.htaccess
-!/tmp/.gitkeep
+/tmp/*
 
 # Ignore Drupal's file directory
 /web/sites/*/files/
