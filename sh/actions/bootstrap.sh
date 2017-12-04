@@ -10,7 +10,11 @@ composer status -d=$APP_ROOT
 # if server iport db
 # rsync files
 
+drush -r $APP_ROOT/web sset system.maintenance_mode 1 -y
 echo "Drush config import"
 drush -r $APP_ROOT/web -y cim
+drush -r $APP_ROOT/web updatedb -y
+ drush -r $APP_ROOT/web entup -y
 echo "Drush cache clear and rebuild"
 drush -r $APP_ROOT/web -y cr drush
+drush -r $APP_ROOT/web sset system.maintenance_mode 0 -y
