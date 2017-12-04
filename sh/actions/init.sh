@@ -19,7 +19,7 @@ then
     fi
 else
     echo "Running locally no need to dycrypt config " $APP_ROOT"/config.tgz.enc"
-    rm config.tgz.enc
+    ls -al
 fi
 
 echo "Wait for db"
