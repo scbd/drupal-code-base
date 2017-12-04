@@ -5,7 +5,7 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-if [ -f "config.tgz.enc" && -f "/run/secrets/settings.php"]
+if [ -f "config.tgz.enc" ] && [ -f "/run/secrets/settings.php" ]
 then
     echo "Decrypt config -- "$APP_ROOT
     openssl enc -d -aes-256-cbc -in config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
