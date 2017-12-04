@@ -11,11 +11,11 @@ jobs:
       - checkout
       - setup_remote_docker
 
-      - restore_cache:
-          keys:
-            - v1-{{ .Branch }}
-          paths:
-            - /caches/app.tar
+      # - restore_cache:
+      #     keys:
+      #       - v1-{{ .Branch }}
+      #     paths:
+      #       - /caches/app.tar
       - run:
           name: submodule update & encrypt
           command: |
@@ -31,12 +31,16 @@ jobs:
             rm config.tgz
             rm -rf config
             ls -al
-
       - run:
-          name: Load Docker image layer cache
+          name: Save Docker image layer cache
           command: |
-            set +o pipefail
-            docker load -i /caches/app.tar | true
+            mkdir -p /caches
+            docker save -o /caches/app.tar app
+      # - run:
+      #     name: Load Docker image layer cache
+      #     command: |
+      #       set +o pipefail
+      #       docker load -i /caches/app.tar | true
 
       - run:
           name: Build application Docker image
@@ -44,11 +48,7 @@ jobs:
             ls -al
             docker build  -f Dockerfile-encrypted -t app .
 
-      - run:
-          name: Save Docker image layer cache
-          command: |
-            mkdir -p /caches
-            docker save -o /caches/app.tar app
+
       - save_cache:
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
