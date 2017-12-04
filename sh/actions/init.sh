@@ -5,7 +5,7 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-if [ -f "${$APP_ROOT}/config.tgz.enc" ]
+if [ -f "$APP_ROOT/config.tgz.enc" ]
 then
     if [ -f "/run/secrets/settings.php" ]
     then
