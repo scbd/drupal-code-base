@@ -31,11 +31,7 @@ jobs:
             rm config.tgz
             rm -rf config
             ls -al
-      - run:
-          name: Save Docker image layer cache
-          command: |
-            mkdir -p /caches
-            docker save -o /caches/app.tar app
+
       # - run:
       #     name: Load Docker image layer cache
       #     command: |
@@ -48,11 +44,15 @@ jobs:
             ls -al
             docker build  -f Dockerfile-encrypted -t app .
 
-
-      - save_cache:
-          key: v1-{{ .Branch }}-{{ epoch }}
-          paths:
-            - /caches/app.tar
+      # - run:
+      #     name: Save Docker image layer cache
+      #     command: |
+      #       mkdir -p /caches
+      #       docker save -o /caches/app.tar app
+      # - save_cache:
+      #     key: v1-{{ .Branch }}-{{ epoch }}
+      #     paths:
+      #       - /caches/app.tar
 
       - deploy:
           name: Push application Docker image
