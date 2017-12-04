@@ -22,7 +22,9 @@ jobs:
             git submodule update --init --remote
             git submodule status
             tar -zc config > config.tgz
+            ls -al
             openssl aes-256-cbc -e -in config.tgz -out config.tgz.enc -S ${SRCKEY:0:10} -k $SRCKEY
+            ls -al
 
       - restore_cache:
           keys:
