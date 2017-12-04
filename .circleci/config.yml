@@ -1,14 +1,14 @@
 version: 2
 jobs:
   build:
-    working_directory: /app
+    working_directory: ~/app
     machine: true
     steps:
       - add_ssh_keys:
           fingerprints:
             - "4c:f3:df:b8:c0:91:7f:b1:71:d3:14:c4:04:d4:15:19"
       - checkout
-  
+
 
       # - restore_cache:
       #     keys:
