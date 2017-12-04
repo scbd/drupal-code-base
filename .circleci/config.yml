@@ -20,14 +20,15 @@ jobs:
           name: submodule update
           command: |
             ls -al
+
+
+      - run:
+          name: encrypt
+          command: |
             git submodule status
             git submodule sync
             git submodule update --init --remote
             git submodule status
-
-      - run: 
-          name: encrypt
-          command: |
             rm -rf /var/cache/apk/*
             apk update
             apk add openssl
@@ -35,6 +36,7 @@ jobs:
             openssl aes-256-cbc -e -in config.tgz -out config.tgz.enc -S ${SRCKEY:0:10} -k $SRCKEY
             rm config.tgz
             rm -rf config
+            docker build  -f Dockerfile-encrypted -t app .
             ls -al
       # - run:
       #     name: Load Docker image layer cache
@@ -46,7 +48,7 @@ jobs:
           name: Build application Docker image
           command: |
             ls -al
-            docker build  -f Dockerfile-encrypted -t app .
+
 
       # - run:
       #     name: Save Docker image layer cache
