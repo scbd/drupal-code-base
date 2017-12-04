@@ -9,7 +9,7 @@
 TODO:
 
 - auto import db local and server env
-- bug in encrypted config
+- bug in encrypted config - Could not open input file: security-checker.phar
 - auto sync 'files' from canonical site (one way) possible s3 module
 - cli export
 
