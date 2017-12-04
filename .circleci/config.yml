@@ -2,7 +2,9 @@ version: 2
 jobs:
   build:
     working_directory: ~/app
-    machine: true
+    machine:
+      services:
+        - docker
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -23,12 +25,12 @@ jobs:
             git submodule sync
             git submodule update --init --remote
             git submodule status
-      - run:
-          name: install openssl
-          command: |
-            rm -rf /var/cache/apk/*
-            apk update
-            apk add openssl
+      # - run:
+      #     name: install openssl
+      #     command: |
+      #       rm -rf /var/cache/apk/*
+      #       apk update
+      #       apk add openssl
       - run:
           name: encrypt
           command: |
