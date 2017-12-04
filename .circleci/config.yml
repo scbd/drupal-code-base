@@ -15,7 +15,8 @@ jobs:
           name: submodule
           command: |
             git submodule sync
-            git submodule update --init 
+            git submodule update --branch {$CIRCLE_BRANCH} --init --remote
+            git submodule status
       - run:
           name: encrypt
           command: |
