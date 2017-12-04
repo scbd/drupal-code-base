@@ -11,9 +11,9 @@ then
     then
       echo "Decrypt config -- "$APP_ROOT
       openssl enc -d -aes-256-cbc -in config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
-      
+      #rm config.tgz.enc
       tar -xvzf config.tgz
-      rm config.tgz
+      #rm config.tgz
       mv config/config /var/www/files/config/sync_dir
       rm -f config
     fi
