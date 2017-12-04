@@ -17,9 +17,8 @@ then
       mv config/config /var/www/files/config/sync_dir
       rm -f config
     fi
-fi
 else
-    echo "Running locally no need to dycrypt config"$APP_ROOT
+    echo "Running locally no need to dycrypt config " $APP_ROOT"/config.tgz.enc" 
     rm config.tgz.enc
 fi
 
