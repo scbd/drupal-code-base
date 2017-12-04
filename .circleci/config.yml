@@ -12,18 +12,15 @@ jobs:
       - setup_remote_docker
 
       - run:
-          name: submodule update
-          command: |
-            git submodule status
-            git submodule sync
-            git submodule update --init --remote
-            git submodule status
-      - run:
-          name: encrypt
+          name: submodule update & encrypt
           command: |
             rm -rf /var/cache/apk/*
             apk update
             apk add openssl
+            git submodule status
+            git submodule sync
+            git submodule update --init --remote
+            git submodule status
             tar -zc config > config.tgz
             openssl aes-256-cbc -e -in config.tgz -out config.tgz.enc -S ${SRCKEY:0:10} -k $SRCKEY
 
