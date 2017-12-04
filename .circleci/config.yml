@@ -11,6 +11,11 @@ jobs:
       - checkout
       - setup_remote_docker
 
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          paths:
+            - /caches/app.tar
       - run:
           name: submodule update & encrypt
           command: |
@@ -27,11 +32,6 @@ jobs:
             rm -rf config
             ls -al
 
-      - restore_cache:
-          keys:
-            - v1-{{ .Branch }}
-          paths:
-            - /caches/app.tar
       - run:
           name: Load Docker image layer cache
           command: |
