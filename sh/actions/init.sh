@@ -5,7 +5,7 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-if [ -f "config.tgz.enc" ]
+if [ -f "${$APP_ROOT}/config.tgz.enc" ]
 then
     if [ -f "/run/secrets/settings.php" ]
     then
@@ -18,7 +18,7 @@ then
       rm -f config
     fi
 else
-    echo "Running locally no need to dycrypt config " $APP_ROOT"/config.tgz.enc" 
+    echo "Running locally no need to dycrypt config " $APP_ROOT"/config.tgz.enc"
     rm config.tgz.enc
 fi
 
