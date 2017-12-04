@@ -24,7 +24,6 @@ RUN set -ex && \
     su-exec www-data mkdir /var/www/files && \
     su-exec www-data mkdir /var/www/files/config && \
     su-exec www-data mkdir /var/www/files/config/sync_dir && \
-    su-exec www-data mv -f  /var/www/html/config /var/www/files/config/sync_dir
 
 USER www-data
 
