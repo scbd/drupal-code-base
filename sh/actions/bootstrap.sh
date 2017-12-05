@@ -1,3 +1,10 @@
+echo "Wait for db"
+if [ -f "/run/secrets/settings.php" ]
+then
+	$APP_ROOT/sh/actions/wait-for-it.sh drupal-1.cluster-c1c5sybjelgu.us-east-1.rds.amazonaws.com:3306 --timeout=0 --strict -- echo "AURORA is up"
+else
+	$APP_ROOT/sh/actions/wait-for-it.sh DRUPAL_mariadb:3306 --timeout=0 --strict -- echo "DRUPAL_mariadb is up"
+fi
 #!/bin/bash
 php $APP_ROOT/sh/actions/security-checker.phar security:check $APP_ROOT/composer.lock
 
