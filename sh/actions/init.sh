@@ -16,6 +16,7 @@ then
       rm -rf config
       ls -al
     fi
+fi
 
 ls -al /var/www/files/config/sync_dir
 echo "Wait for db"
