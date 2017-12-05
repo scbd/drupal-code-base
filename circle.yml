@@ -9,7 +9,7 @@ machine:
 
 dependencies:
   override:
-    - pwd    
+    - pwd
     - git submodule sync
     - git submodule update --init --remote
     - docker info
@@ -18,6 +18,7 @@ dependencies:
     - docker build -f Dockerfile-encrypted -t output .
     - pwd
     - ls -al
+    - docker build -f Dockerfile-encrypted -t output .    
 test:
   override:
     - php --version
