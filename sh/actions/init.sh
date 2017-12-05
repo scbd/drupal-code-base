@@ -19,7 +19,7 @@ then
 else
     echo "Running locally no need to dycrypt config " $APP_ROOT"/config.tgz.enc"
     ls -al
-    cat /var/www/files/config/sync_dir
+    ls -al /var/www/files/config/sync_dir
 fi
 
 echo "Wait for db"
