@@ -5,6 +5,7 @@ machine:
 
 dependencies:
   override:
+    - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php 7.1.0
     - git submodule sync
     - git submodule update --init --remote
     - docker info
