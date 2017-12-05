@@ -12,12 +12,13 @@ dependencies:
     - git submodule sync
     - git submodule update --init --remote
     - docker info
-    - php --version
     - tar -zc config | openssl enc -aes-256-cbc -out config.tgz.enc -salt -k $SRCKEY
     - rm -rf config
     - docker build -f Dockerfile-encrypted -t output .
     - ls -al
-
+test:
+  override:
+    - php --version
 deployment:
   master:
     branch: /^master|dev|stg$/
