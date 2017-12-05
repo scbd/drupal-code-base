@@ -1,14 +1,18 @@
 
 machine:
+  pre:
+    - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php 7.1.0
+  php:
+    version: 7.1.0
   services:
     - docker
 
 dependencies:
   override:
-    - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php 7.1.0
     - git submodule sync
     - git submodule update --init --remote
     - docker info
+    - php --version
     - tar -zc config | openssl enc -aes-256-cbc -out config.tgz.enc -salt -k $SRCKEY
     - rm -rf config
     - docker build -f Dockerfile-encrypted -t output .
