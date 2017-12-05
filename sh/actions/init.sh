@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-
+sudo -u www-data
 if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
@@ -12,13 +12,11 @@ then
       echo "Decrypt config -- "$APP_ROOT
       openssl enc -d -aes-256-cbc -in config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
       rm config.tgz.enc
-      mv config/config /var/www/files/config/sync_dir
+      mv config/config/* /var/www/files/config/sync_dir
       rm -rf config
       ls -al
     fi
-else
-    echo "Running locally no need to dycrypt config " $APP_ROOT"/config.tgz.enc"
-fi
+
 ls -al /var/www/files/config/sync_dir
 echo "Wait for db"
 if [ -f "/run/secrets/settings.php" ]
