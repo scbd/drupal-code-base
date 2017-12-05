@@ -7,6 +7,8 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+        docker_layer_caching: true
+
       - add_ssh_keys:
           fingerprints:
             - "4c:f3:df:b8:c0:91:7f:b1:71:d3:14:c4:04:d4:15:19"
@@ -24,11 +26,11 @@ jobs:
             rm -rf /var/cache/apk/*
             apk update
             apk add openssl
-      - restore_cache:
-          keys:
-            - v1-{{ .Branch }}
-          paths:
-            - /caches/app.tar
+      # - restore_cache:
+      #     keys:
+      #       - v1-{{ .Branch }}
+      #     paths:
+      #       - /caches/app.tar
       - run:
           name: encrypt
           command: |
@@ -41,22 +43,22 @@ jobs:
             rm config.tgz
             rm -rf config
 
-      - run:
-          name: Load Docker image layer cache
-          command: |
-            set +o pipefail
-            docker load -i /caches/app.tar | true
+      # - run:
+      #     name: Load Docker image layer cache
+      #     command: |
+      #       set +o pipefail
+      #       docker load -i /caches/app.tar | true
 
       - run:
           name: Build application Docker image
           command: |
             ls -al
-            docker build --cache-from=app  -f Dockerfile-encrypted -t app .
+            docker build  -f Dockerfile-encrypted -t app .
             ls -al
-      - save_cache:
-          key: v1-{{ .Branch }}-{{ epoch }}
-          paths:
-            - /caches/app.tar
+      # - save_cache:
+      #     key: v1-{{ .Branch }}-{{ epoch }}
+      #     paths:
+      #       - /caches/app.tar
       # - run:
       #     name: Save Docker image layer cache
       #     command: |
