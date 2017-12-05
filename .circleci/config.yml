@@ -6,8 +6,8 @@ jobs:
       - image: docker:17.09.0-ce-git
     steps:
       - checkout
-      - setup_remote_docker
-        docker_layer_caching: true
+      - setup_remote_docker:
+          docker_layer_caching: true
 
       - add_ssh_keys:
           fingerprints:
