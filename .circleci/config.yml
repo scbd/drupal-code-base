@@ -1,22 +1,17 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/app
-    machine:
-      services:
-        - docker
+    working_directory: /app
+    docker:
+      - image: docker:17.09.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
     steps:
       - add_ssh_keys:
           fingerprints:
             - "4c:f3:df:b8:c0:91:7f:b1:71:d3:14:c4:04:d4:15:19"
       - checkout
-
-
-      # - restore_cache:
-      #     keys:
-      #       - v1-{{ .Branch }}
-      #     paths:
-      #       - /caches/app.tar
       - run:
           name: submodule update
           command: |
@@ -25,12 +20,17 @@ jobs:
             git submodule sync
             git submodule update --init --remote
             git submodule status
-      # - run:
-      #     name: install openssl
-      #     command: |
-      #       rm -rf /var/cache/apk/*
-      #       apk update
-      #       apk add openssl
+      - run:
+          name: install openssl
+          command: |
+            rm -rf /var/cache/apk/*
+            apk update
+            apk add openssl
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          paths:
+            - /caches/app.tar
       - run:
           name: encrypt
           command: |
@@ -43,19 +43,22 @@ jobs:
             rm config.tgz
             rm -rf config
 
-      # - run:
-      #     name: Load Docker image layer cache
-      #     command: |
-      #       set +o pipefail
-      #       docker load -i /caches/app.tar | true
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /caches/app.tar | true
 
       - run:
           name: Build application Docker image
           command: |
             ls -al
-            docker build  -f Dockerfile-encrypted -t app .
+            docker build --cache-from=app  -f Dockerfile-encrypted -t app .
             ls -al
-
+      - save_cache:
+          key: v1-{{ .Branch }}-{{ epoch }}
+          paths:
+            - /caches/app.tar
       # - run:
       #     name: Save Docker image layer cache
       #     command: |
