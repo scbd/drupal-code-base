@@ -53,7 +53,7 @@ jobs:
           name: Build application Docker image
           command: |
             ls -al
-            docker build  -f Dockerfile-encrypted -t scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH .
+            docker build  -f Dockerfile-encrypted -t scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH /app
             ls -al
       # - save_cache:
       #     key: v1-{{ .Branch }}-{{ epoch }}
