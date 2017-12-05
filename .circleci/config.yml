@@ -53,7 +53,7 @@ jobs:
           name: Build application Docker image
           command: |
             ls -al
-            docker build  -f Dockerfile-encrypted -t app .
+            docker build  -f Dockerfile-encrypted -t scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH .
             ls -al
       # - save_cache:
       #     key: v1-{{ .Branch }}-{{ epoch }}
@@ -74,12 +74,10 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "dev" ]; then
               docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker tag app scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
               docker push scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
             fi
             if [ "${CIRCLE_BRANCH}" == "stg" ]; then
               docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker tag app scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
               docker push scbd/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
             fi
 
