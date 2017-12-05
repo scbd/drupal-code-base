@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-sudo -u www-data
+
 if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
