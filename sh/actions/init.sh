@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-
+su www-data
 if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
@@ -10,9 +10,9 @@ then
     if [ -f "/run/secrets/settings.php" ]
     then
       echo "Decrypt config -- "$APP_ROOT
-      openssl enc -d -aes-256-cbc -in config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
+      sudo -u www-data openssl enc -d -aes-256-cbc -in config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
       #rm config.tgz.enc
-      mv config/config/* /var/www/files/config/sync_dir
+      sudo -u www-data mv config/config/* /var/www/files/config/sync_dir
       rm -rf config
     fi
 fi
