@@ -6,22 +6,32 @@ else
 	$APP_ROOT/sh/actions/wait-for-it.sh DRUPAL_mariadb:3306 --timeout=0 --strict -- echo "DRUPAL_mariadb is up"
 fi
 #!/bin/bash
+
+echo "Drush security check"
 php $APP_ROOT/sh/actions/security-checker.phar security:check $APP_ROOT/composer.lock
 
 chmod -R 770 /var/www/html/tmp
 
 echo "Composer init"
-
-composer status -d=$APP_ROOT
+sudo -u www-data composer status -d=$APP_ROOT
 
 # if server iport db
 # rsync files
-
+echo "Drush maintenance_mode on"
 drush -r $APP_ROOT/web sset system.maintenance_mode 1 -y
 echo "Drush config import"
 drush -r $APP_ROOT/web -y cim
+echo "Drush updatedb"
 drush -r $APP_ROOT/web updatedb -y
- drush -r $APP_ROOT/web entup -y
+echo "Drush entup"
+drush -r $APP_ROOT/web entup -y
 echo "Drush cache clear and rebuild"
 drush -r $APP_ROOT/web -y cr drush
+echo "Drush maintenance_mode off"
 drush -r $APP_ROOT/web sset system.maintenance_mode 0 -y
+
+
+echo "ls -al /var/www/files/config/sync_dir"
+ls -al /var/www/files/config/sync_dir
+echo "ls -al /var/www/html"
+ls -al /var/www/html

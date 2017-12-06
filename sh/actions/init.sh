@@ -12,12 +12,10 @@ then
       echo "Decrypt config -- "$APP_ROOT
       openssl enc -d -aes-256-cbc -in config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
       rm config.tgz.enc
-      mv config/config/* /var/www/files/config/sync_dir
+      sudo -u www-data mv config/config/* /var/www/files/config/sync_dir
       rm -rf config
     fi
 fi
-
-ls -al /var/www/files/config/sync_dir
 
 $APP_ROOT/sh/actions/wait-for-it.sh DRUPAL_nginx:80 --timeout=0 --strict -- sh $APP_ROOT/sh/actions/bootstrap.sh
 
