@@ -38,3 +38,5 @@ echo "ls -al /var/www/files/config/sync_dir"
 ls -al /var/www/files/config/sync_dir
 echo "ls -al /var/www/html"
 ls -al /var/www/html
+
+fmp-php -R
