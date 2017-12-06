@@ -12,7 +12,7 @@ then
       echo "Decrypt config -- "$APP_ROOT
       sudo -u www-data openssl enc -d -aes-256-cbc -in config.tgz.enc -k `cat /run/secrets/SRCKEY` | tar xz
       #rm config.tgz.enc
-      sudo -u www-data mv config/config/* /var/www/files/config/sync_dir
+      mv config/config/* /var/www/files/config/sync_dir
       rm -rf config
     fi
 fi
