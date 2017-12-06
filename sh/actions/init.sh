@@ -17,6 +17,6 @@ then
     fi
 fi
 
-#$APP_ROOT/sh/actions/wait-for-it.sh DRUPAL_nginx:80 --timeout=0 --strict -- sh $APP_ROOT/sh/actions/bootstrap.sh
-sh $APP_ROOT/sh/actions/bootstrap.sh
+$APP_ROOT/sh/actions/wait-for-it.sh DRUPAL_nginx:80 --timeout=0 --strict -- sh $APP_ROOT/sh/actions/bootstrap.sh
+
 exec "$@"
