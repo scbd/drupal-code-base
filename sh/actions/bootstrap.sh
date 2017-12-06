@@ -10,6 +10,7 @@ fi
 echo "Drush security check"
 php $APP_ROOT/sh/actions/security-checker.phar security:check $APP_ROOT/composer.lock
 
+chown -R www-data:www-data  /usr/local/etc/php-fpm.d
 chmod -R 770 /var/www/html/tmp
 
 echo "Composer init"
@@ -31,7 +32,7 @@ then
   drush -r $APP_ROOT/web -y cr drush
   echo "Drush maintenance_mode off"
   drush -r $APP_ROOT/web sset system.maintenance_mode 0 -y
-  rm config.tgz.enc
+  rm $APP_ROOT/config.tgz.enc
 fi
 
 echo "ls -al /var/www/files/config/sync_dir"
