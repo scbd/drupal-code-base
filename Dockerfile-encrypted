@@ -10,6 +10,11 @@ USER root
 COPY . ./
 
 RUN set -ex && \
+    deluser www-data; \
+    addgroup -g 82 -S www-data; \
+    adduser -u 82 -D -S -s /bin/bash -G www-data www-data; \
+    sed -i '/^www-data/s/!/*/' /etc/shadow; \
+    echo "PS1='\w\$ '" >> /home/www-data/.bashrc; \
     mv /usr/local/bin/actions.mk /usr/local/bin/drupal-php.mk && \
     mkdir -p /aws && \
     apk -Uuv add groff less python py-pip && \
