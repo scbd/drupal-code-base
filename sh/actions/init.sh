@@ -17,6 +17,8 @@ then
     fi
 fi
 
+sudo chown -R www-data:www-data  /usr/local/etc/php-fpm.d
+
 $APP_ROOT/sh/actions/wait-for-it.sh DRUPAL_nginx:80 --timeout=0 --strict -- sh $APP_ROOT/sh/actions/bootstrap.sh
 
 exec "$@"

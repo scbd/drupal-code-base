@@ -10,7 +10,6 @@ fi
 echo "Drush security check"
 php $APP_ROOT/sh/actions/security-checker.phar security:check $APP_ROOT/composer.lock
 
-chown -R www-data:www-data  /usr/local/etc/php-fpm.d
 chmod -R 770 /var/www/html/tmp
 
 echo "Composer init"
