@@ -17,19 +17,22 @@ sudo -u www-data composer status -d=$APP_ROOT
 
 # if server iport db
 # rsync files
-echo "Drush maintenance_mode on"
-drush -r $APP_ROOT/web sset system.maintenance_mode 1 -y
-echo "Drush config import"
-drush -r $APP_ROOT/web -y cim
-echo "Drush updatedb"
-drush -r $APP_ROOT/web updatedb -y
-echo "Drush entup"
-drush -r $APP_ROOT/web entup -y
-echo "Drush cache clear and rebuild"
-drush -r $APP_ROOT/web -y cr drush
-echo "Drush maintenance_mode off"
-drush -r $APP_ROOT/web sset system.maintenance_mode 0 -y
-
+if [ -f "$APP_ROOT/config.tgz.enc" ]
+then
+  echo "Drush maintenance_mode on"
+  drush -r $APP_ROOT/web sset system.maintenance_mode 1 -y
+  echo "Drush config import"
+  drush -r $APP_ROOT/web -y cim
+  echo "Drush updatedb"
+  drush -r $APP_ROOT/web updatedb -y
+  echo "Drush entup"
+  drush -r $APP_ROOT/web entup -y
+  echo "Drush cache clear and rebuild"
+  drush -r $APP_ROOT/web -y cr drush
+  echo "Drush maintenance_mode off"
+  drush -r $APP_ROOT/web sset system.maintenance_mode 0 -y
+  rm config.tgz.enc
+fi
 
 echo "ls -al /var/www/files/config/sync_dir"
 ls -al /var/www/files/config/sync_dir
