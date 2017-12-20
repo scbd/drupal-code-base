@@ -59,10 +59,10 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-          "@drupal-scaffold"
+          "@drupal-scaffold",
+          "DrupalProject\\composer\\ScriptHandler::init"
         ],
         "post-status-cmd": [
-          "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::init"
         ]
     },
