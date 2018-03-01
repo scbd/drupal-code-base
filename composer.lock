@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee79858877660ac154fa9cf37581d770",
+    "content-hash": "b76ca5ae3d88fc0bcd5406e7118008fc",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1524,16 +1524,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.4.5",
+            "version": "8.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "44a857df6f7ffd063cffed9a41767cdc50dd7474"
+                "reference": "0b9070370e272da441b4be52561c559c05f4553d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/44a857df6f7ffd063cffed9a41767cdc50dd7474",
-                "reference": "44a857df6f7ffd063cffed9a41767cdc50dd7474",
+                "url": "https://api.github.com/repos/drupal/core/zipball/0b9070370e272da441b4be52561c559c05f4553d",
+                "reference": "0b9070370e272da441b4be52561c559c05f4553d",
                 "shasum": ""
             },
             "require": {
@@ -3541,6 +3541,41 @@
             "time": "2018-02-28T15:25:30+00:00"
         },
         {
+            "name": "scbd/social_auth_scbd",
+            "version": "0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scbd/social_auth_scbd.git",
+                "reference": "1dc29e244d57e14e6ac5945bc189562dfb98cda2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scbd/social_auth_scbd/zipball/1dc29e244d57e14e6ac5945bc189562dfb98cda2",
+                "reference": "1dc29e244d57e14e6ac5945bc189562dfb98cda2",
+                "shasum": ""
+            },
+            "require": {
+                "league/oauth2-google": "^2.0"
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "UN Convention on Biological Diversity",
+                    "email": "it@cbd.int"
+                }
+            ],
+            "description": "Social Auth integration for SCBD.",
+            "homepage": "https://github.com/scbd/social_auth_scbd",
+            "keywords": [
+                "drupal"
+            ],
+            "time": "2018-03-06T18:40:20+00:00"
+        },
+        {
             "name": "stack/builder",
             "version": "v1.0.5",
             "source": {
@@ -3992,7 +4027,7 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v3.4.5",
+            "version": "v3.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -5152,16 +5187,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.35.0",
+            "version": "v1.35.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "daa657073e55b0a78cce8fdd22682fddecc6385f"
+                "reference": "9c24f2cd39dc1906b76879e099970b7e53724601"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/daa657073e55b0a78cce8fdd22682fddecc6385f",
-                "reference": "daa657073e55b0a78cce8fdd22682fddecc6385f",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9c24f2cd39dc1906b76879e099970b7e53724601",
+                "reference": "9c24f2cd39dc1906b76879e099970b7e53724601",
                 "shasum": ""
             },
             "require": {
@@ -5213,7 +5248,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-09-27T18:06:46+00:00"
+            "time": "2018-03-03T16:21:29+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
