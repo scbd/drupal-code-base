@@ -1524,6 +1524,7 @@
         },
         {
             "name": "drupal/core",
+
             "version": "8.4.5",
             "source": {
                 "type": "git",
@@ -1534,6 +1535,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/drupal/core/zipball/44a857df6f7ffd063cffed9a41767cdc50dd7474",
                 "reference": "44a857df6f7ffd063cffed9a41767cdc50dd7474",
+
                 "shasum": ""
             },
             "require": {
@@ -3539,6 +3541,7 @@
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "time": "2018-02-28T15:25:30+00:00"
+
         },
         {
             "name": "stack/builder",
@@ -3992,7 +3995,9 @@
         },
         {
             "name": "symfony/debug",
+
             "version": "v3.4.5",
+
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -5152,16 +5157,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.35.0",
+            "version": "v1.35.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "daa657073e55b0a78cce8fdd22682fddecc6385f"
+                "reference": "9c24f2cd39dc1906b76879e099970b7e53724601"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/daa657073e55b0a78cce8fdd22682fddecc6385f",
-                "reference": "daa657073e55b0a78cce8fdd22682fddecc6385f",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9c24f2cd39dc1906b76879e099970b7e53724601",
+                "reference": "9c24f2cd39dc1906b76879e099970b7e53724601",
                 "shasum": ""
             },
             "require": {
@@ -5213,7 +5218,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-09-27T18:06:46+00:00"
+            "time": "2018-03-03T16:21:29+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
