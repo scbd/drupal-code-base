@@ -21,7 +21,7 @@
         "cweagans/composer-patches": "1.6",
         "drupal-composer/drupal-scaffold": "2.3.0",
         "drupal/console": "1.2.0",
-        "drupal/core": "~8.5.0",
+        "drupal/core": "8.4.5",
         "drupal/s3fs": "^3.0",
         "drupal/social_api": "^2.0",
         "drupal/social_auth": "^2.0",

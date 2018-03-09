@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b76ca5ae3d88fc0bcd5406e7118008fc",
+    "content-hash": "ee79858877660ac154fa9cf37581d770",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1524,16 +1524,18 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.5.0",
+
+            "version": "8.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "0b9070370e272da441b4be52561c559c05f4553d"
+                "reference": "44a857df6f7ffd063cffed9a41767cdc50dd7474"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/0b9070370e272da441b4be52561c559c05f4553d",
-                "reference": "0b9070370e272da441b4be52561c559c05f4553d",
+                "url": "https://api.github.com/repos/drupal/core/zipball/44a857df6f7ffd063cffed9a41767cdc50dd7474",
+                "reference": "44a857df6f7ffd063cffed9a41767cdc50dd7474",
+
                 "shasum": ""
             },
             "require": {
@@ -3539,41 +3541,7 @@
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "time": "2018-02-28T15:25:30+00:00"
-        },
-        {
-            "name": "scbd/social_auth_scbd",
-            "version": "0.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/scbd/social_auth_scbd.git",
-                "reference": "1dc29e244d57e14e6ac5945bc189562dfb98cda2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/scbd/social_auth_scbd/zipball/1dc29e244d57e14e6ac5945bc189562dfb98cda2",
-                "reference": "1dc29e244d57e14e6ac5945bc189562dfb98cda2",
-                "shasum": ""
-            },
-            "require": {
-                "league/oauth2-google": "^2.0"
-            },
-            "type": "drupal-module",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "UN Convention on Biological Diversity",
-                    "email": "it@cbd.int"
-                }
-            ],
-            "description": "Social Auth integration for SCBD.",
-            "homepage": "https://github.com/scbd/social_auth_scbd",
-            "keywords": [
-                "drupal"
-            ],
-            "time": "2018-03-06T18:40:20+00:00"
+
         },
         {
             "name": "stack/builder",
@@ -4027,7 +3995,9 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v3.4.6",
+
+            "version": "v3.4.5",
+
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
